@@ -1,0 +1,30 @@
+{% extends "helo/basic.html" %}
+{% block title %} {{a.name}} | Signup {% endblock %}
+{% block body %} 
+
+<div class="main" style="width: 30%; margin-left: 35%; margin-top: 2%; margin-bottom: 2%;">
+    <label style="margin-left: 15%; font-family: Kristen ITC; font-size: 170%; margin-bottom: 5%;">Sign up to AMKART</label>
+<form>
+    <div class="mb-3">
+      <label for="exampleInputName" class="form-label" style="font-family: Kristen ITC; font-size: 170%;">Username 👇</label>
+      <input type="text" class="form-control" id="exampleInputName" aria-describedby="nameHelp"  style="font-family: Kristen ITC; font-size: 170%;" value="" required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label" style="font-family: Kristen ITC; font-size: 170%; margin-top: 5%;">Password 👇</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" style="font-family: Kristen ITC; font-size: 170%;" value="" required>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail" class="form-label" style="font-family: Kristen ITC; font-size: 170%; margin-top: 5%;">E-Mail 👇</label>
+        <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"  style="font-family: Kristen ITC; font-size: 170%;" value="" required>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputNumber" class="form-label" style="font-family: Kristen ITC; font-size: 170%; margin-top: 5%;">Phone Number (10 digit only) 👇</label>
+          
+        <input type="tel" class="form-control" id="exampleInputNumber" aria-describedby="numberHelp" pattern="[0-9]{10}" style="font-family: Kristen ITC; font-size: 170%;" value="" required>
+    </div>
+    <button type="submit" class="btn btn-info" style="margin-top: 5%; width: 100%; font-family: Kristen ITC; font-size: 170%; margin-bottom: 15%;">Sign Up</button>
+  </form>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "helo/basic.html" %}
+{% block title %} {{a.name}} | {{Product.name}} {% endblock %}
+{% block body %} 
+
+
+<script>
+  function switch_to_1(){
+    document.getElementById("model").src="{{Product.model_embed_1}}"
+    document.getElementById("color_label").innerHTML="Color: {{Product.color_1}}"
+  }
+  function switch_to_2(){
+    document.getElementById("model").src="{{Product.model_embed_2}}"
+    document.getElementById("color_label").innerHTML="Color: {{Product.color_2}}"
+  }
+  function switch_to_3(){
+    document.getElementById("model").src="{{Product.model_embed_3}}"
+    document.getElementById("color_label").innerHTML="Color: {{Product.color_3}}"
+  }
+</script>
+
+<table style="margin-top: 3%;">
+    <tr>
+      <td>
+  <div class="model">
+    <p style="font-size: 250%; font-family: Kristen ITC; color: blue; margin-left: 7%;">Drag to rotate this 360° model</p>
+      <iframe id="model" width="745" height="480" src="{{Product.model_embed_3}}" frameborder="0"></iframe>
+    </div>
+    </td>
+    <td style="width: 50%;">
+      <p style="font-size: 300%; font-family: Kristen ITC; color: blue; margin-left: 7%; text-align: center;">{{Product.name}}</p>
+      <hr>
+      <p id="color_label" style="font-size: 200%; font-family: Kristen ITC; color: blue; margin-left: 7%; text-align: center;">Color: {{Product.color_3}}</p>
+      <br>
+      <p style="font-size: 200%; font-family: Kristen ITC; color: black; margin-left: 7%; text-align: center;">Price: ₹ {{Product.price}}</p>
+
+      <div class="specs" style="font-size: large;">
+        <p style="font-size: 150%; font-family: Kristen ITC; color: black;">Specifications:</p>
+      <ul>
+        <li>{{Product.spec_1}}</li>
+        <li>{{Product.spec_2}}</li>
+        <li>{{Product.spec_3}}</li>
+        <li>{{Product.spec_4}}</li>
+        <li>{{Product.spec_5}}</li>
+      </ul>
+      </div>
+      <p style="font-size: 150%; font-family: Kristen ITC; color: black;"><font color="red">Color Options: </font> <button onclick="switch_to_1()" style="background-color: lightblue;"><font color="black">{{Product.color_1}}</font></button> | <button onclick="switch_to_2()" style="background-color: lightblue;"><font color="black">{{Product.color_2}}</font></button> | <button onclick="switch_to_3()" style="background-color: lightblue;"><font color="black">{{Product.color_3}}</font></button> </p>
+        <br>
+      <a href="#"><button type="button" class="btn btn-primary" style="width: 49%; font-size: 22px;"><font color="white">Add to Cart</font></button></a>
+      <a href="#"><button type="button" class="btn btn-info" style="width: 49%; font-size: 22px;"><font color="white">Buy Now</font></button></a>
+    </td>
+  </tr>
+  </table>
+  <br><br>
+
+{% endblock %}

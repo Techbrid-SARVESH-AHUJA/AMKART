@@ -1,0 +1,22 @@
+{% extends "helo/basic.html" %}
+{% block title %} {{a.name}} | Login {% endblock %}
+{% block body %} 
+
+<div class="main" style="width: 30%; margin-left: 35%; margin-top: 2%; margin-bottom: 2%;">
+    <label style="margin-left: 15%; font-family: Kristen ITC; font-size: 170%; margin-bottom: 5%;">Log In into AMKART</label>
+<form>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label" style="font-family: Kristen ITC; font-size: 170%;">Username 👇</label>
+      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  style="font-family: Kristen ITC; font-size: 170%;" value="" required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label" style="font-family: Kristen ITC; font-size: 170%; margin-top: 5%;">Password 👇</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" style="font-family: Kristen ITC; font-size: 170%;" value="" required>
+    </div>
+    <button type="submit" class="btn btn-info" style="margin-top: 5%; width: 100%; font-family: Kristen ITC; font-size: 170%; margin-bottom: 15%;">Log In</button>
+  </form>
+<label style="font-family: Kristen ITC; font-size: 150%; margin-bottom: 5%;">Don't have an AMKART account yet?</label>
+<a href="{% url 'signup' %}"><button type="submit" class="btn btn-info" style="width: 100%; font-family: Kristen ITC; font-size: 170%;">Sign up to AMKART</button></a>
+</div>
+
+{% endblock %}
