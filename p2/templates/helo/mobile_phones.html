@@ -5,14 +5,20 @@
 
 <script>
   function switch_to_1(){
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
     document.getElementById("model").src="{{Product.model_embed_1}}"
     document.getElementById("name").innerHTML="{{Product.name}} ({{Product.color_1}})"
   }
   function switch_to_2(){
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
     document.getElementById("model").src="{{Product.model_embed_2}}"
     document.getElementById("name").innerHTML="{{Product.name}} ({{Product.color_2}})"
   }
   function switch_to_3(){
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
     document.getElementById("model").src="{{Product.model_embed_3}}"
     document.getElementById("name").innerHTML="{{Product.name}} ({{Product.color_3}})"
   }
