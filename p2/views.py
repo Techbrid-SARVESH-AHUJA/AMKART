@@ -4,11 +4,6 @@ from app.models import *
 from app.forms import contact_us_form
 
 
-from django.shortcuts import redirect
-from django.core.mail import send_mail, BadHeaderError
-
-
-
 def index(request):
     Slides=slider.objects.all()
     Categories=categorie.objects.all()
