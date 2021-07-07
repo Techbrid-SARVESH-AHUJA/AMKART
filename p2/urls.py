@@ -46,7 +46,13 @@ urlpatterns = [
     
     path('clocks/<str:pk_prod>/', views.clocks, name="clocks"),
 
-    path('some/', views.some, name="some"),
+    path('blog/', views.blog, name="blog"),
+
+    path('checkout/', views.checkout, name="checkout"),
+
+    path('preview/', views.preview, name="preview"),
+    
+    path('logout/', views.logout, name="logout"),
 
 
     url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 

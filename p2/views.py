@@ -1,7 +1,12 @@
+from app.decorators import verification
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from app.models import *
-from app.forms import contact_us_form
+from app.forms import *
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login as logi, logout as logo
+from django.contrib import messages
+from app.decorators import *
 
 
 def index(request):
@@ -45,15 +50,34 @@ def shipping_rates(request):
     return render(request, 'helo/shipping_rates.html', context)
 
 
+@verification
 def login(request):
+    if request.method=='POST':
+        username=request.POST.get("username")
+        password=request.POST.get("password")
+        user=authenticate(request, username=username, password=password)
+        if user is not None:
+            logi(request, user)
+            return redirect('index')
+        else:
+            messages.info(request, "invalid user")
+            Details=company.objects.all()
+            context={"Details": Details}
+            return render(request, 'helo/login.html', context)
     Details=company.objects.all()
     context={"Details": Details}
     return render(request, 'helo/login.html', context)
 
 
 def signup(request):
+    form=signup_data()
+    if request.method=='POST':
+        form=signup_data(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
     Details=company.objects.all()
-    context={"Details": Details}
+    context={"Details": Details, "form": form}
     return render(request, 'helo/signup.html', context)
 
 
@@ -85,5 +109,44 @@ def clocks(request, pk_prod):
     return render(request, 'helo/clocks.html', context)
 
 
-def some(request):
-    return render(request, 'helo/some.html')
+
+
+def checkout(request):
+    form=checkout_details
+    if request.method=='POST':
+        form=checkout_details(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('preview')
+    Details=company.objects.all()
+    context={"Details": Details, "form": form}
+    return render(request, 'helo/checkout.html', context)
+
+
+
+
+
+def blog(request):
+    form=add_blog_data
+    if request.method=='POST':
+        form=add_blog_data(request.POST)
+        if form.is_valid:
+            form.save()
+    blogs=blog_data.objects.all()
+    Details=company.objects.all()
+    context={"Details": Details, "blogs": blogs, "form": form}
+    return render(request, 'helo/blog.html', context)
+
+
+
+
+
+def preview(request):
+    Details=company.objects.all()
+    context={"Details": Details}
+    return render(request, 'helo/preview.html', context)
+
+
+def logout(request):
+    logo(request)
+    return redirect('index')

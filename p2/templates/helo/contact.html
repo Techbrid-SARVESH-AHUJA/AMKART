@@ -2,7 +2,11 @@
 {% block title %} {{a.name}} | Contact Us {% endblock %}
 {% block body %} 
 
-
+<script>
+  function submitted_alert() {
+    alert("Your form has been submitted. Thanks for cantacting us. We will contact you as soon as possible")
+  }
+</script>
 
 
 
@@ -15,16 +19,14 @@
         <td>
         
           <div class="form">
-            <form method="POST">
+            <form method="POST" onsubmit="return submitted_alert()">
               {% csrf_token %}
                 <div class="mb-3 mt-4">
-                  <!--<label for="Name" class="form-label">Name:</label>-->
-                  
                   <input type="text" name="name" maxlength="200" required="" id="id_name" style="width: 97%;" placeholder="NAME:">
                   <br><br>
                   <input type="email" name="e_mail" maxlength="200" required="" id="id_e_mail" style="width: 97%;" placeholder="E-MAIL:">
                   <br><br>
-                  <textarea name="message" maxlength="200" required="" id="id_message" style="width: 97%; height: 150px;" placeholder="MESSAGE:"></textarea>
+                  <textarea name="message" maxlength="500" required="" id="id_message" style="width: 97%; height: 150px;" placeholder="MESSAGE:"></textarea>
                   <br><br>
                   <input type="submit" class="btn btn-primary" style="font-size: 30px; width: 97%;" value="Submit">
                 </div>
